@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+    <title>Tower of Hanoi</title>
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="bootstrap-3.3.4-dist/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Romanesco' rel='stylesheet' type='text/css'>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-timer.min.js"></script>
+    <script src="js/logic.js"></script>
+    <!-- /*Timer*/ -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="js/tock.js"></script>
+    <link rel="stylesheet" href="css/customize.css">
+    <script>
+    window.onload = function() {
+
+        var timer = new Tock({
+            callback: function() {
+                $('#clockface').val(timer.msToTime(timer.lap()));
+            }
+        });
+
+        var resetClock = function() {
+            timer.reset();
+            $('#clockface').val('');
+            $('#laptimes').html('');
+        };
+
+        $('#start').on('click', function() {
+            resetClock();
+            timer.start($('#clockface').val());
+        });
+
+        $('#lap').on('click', function() {
+            $('#laptimes').append(timer.msToTime(timer.lap()) + '<br>');
+        });
+
+        $('#pause').on('click', function() {
+            timer.pause();
+        });
+
+        $('#stop').on('click', function() {
+            timer.stop();
+        });
+
+        $('#reset').on('click', resetClock);
+
+    }
+    </script>
+    <script>
+    // angular.module('MyApp', ['timer'])
+    //     .controller('MyAppController', ['$scope', function($scope) {
+    //         $scope.timerRunning = true;
+
+    //         $scope.startTimer = function() {
+    //             $scope.$broadcast('timer-start');
+    //             $scope.timerRunning = true;
+    //         };
+
+    //         $scope.stopTimer = function() {
+    //             $scope.$broadcast('timer-stop');
+    //             $scope.timerRunning = false;
+    //         };
+
+    //         $scope.$on('timer-stopped', function(event, data) {
+    //             console.log('Timer Stopped - data = ', data);
+    //         });
+    //     }]);
+
+    // var myapp = angular.module('MyApp', ['timer'])
+    // myapp.controller('MyAppController', ['$scope', function ($scope) {
+    //     $scope.timerRunning = true;
+
+    //     $scope.startTimer = function() {
+    //         $scope.$broadcast('timer-start');
+    //         $scope.timerRunning = true;
+    //     };
+
+    //     $scope.stopTimer = function() {
+    //         $scope.$broadcast('timer-stop');
+    //         $scope.timerRunning = false;
+    //     };
+
+    //     $scope.$on('timer-stopped', function(event, data) {
+    //         console.log('Timer Stopped - data = ', data);
+    //     });
+    // }]);
+    </script>
+</head>
+
+<body>
+    <!--     <div class="container"  ng-app="MyApp"> -->
+    <div class="container">
+        <!--  <div id="header">test</div> -->
+        <div id="headwords"> Indiana Jones Coin Adventure </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div> Ideas Based on TOWER OF HANOI </div>
+            </div>
+        </div>
+        <div class="col-xs-12 ">
+            <div id="container1" class="col-xs-4 coinContainner" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <!-- <img id="oneCent" src="img/1cent.jpg" draggable="true" width=100> -->
+                <img id="1" src="img/1cent.png" ondragstart="drag(event)" draggable="true" width=80>
+                <img id="5" src="img/5cents.png" ondragstart="drag(event)" draggable="true" width=100>
+                <img id="100" src="img/1Do.png" ondragstart="drag(event)" draggable="true" width=120>
+            </div>
+            <div id="container2" class="col-xs-4 coinContainner" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div id="container3" class="col-xs-4 coinContainner" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="col-xs-12 timer">
+            <h2>Timer</h2>
+            <p>
+                <button class="btn btn-primary" id="start">Start</button>
+                <button class="btn btn-primary" id="pause">Pause/Conitune</button>
+                <button class="btn btn-primary" id="stop"> Stop</button>
+                <button class="btn btn-primary" id="reset">Reset</button>
+            </p>
+            <div class="col-xs-2">
+                <input id="clockface" class="form-control" placeholder="00:00:00">
+            </div>
+        </div>
+
+
+       <!--  <span class="label label-default">Default</span>
+        <span class="label label-primary">Primary</span>
+        <span class="label label-success">Success</span>
+        <span class="label label-info">Info</span>
+        <span class="label label-warning">Warning</span>
+        <span class="label label-danger">Danger</span> -->
+        <!--         <div class="time"> {{date | date:'yyyy-MM-dd'}} </div>
+        <div class="time"> {{date | date:'yyyy-MM-dd HH:mm:ss Z'}} </div> -->
+        <!--             <div ng-controller="MyAppController">
+                <h1>AngularJS - Single Timer Example</h1>
+                <h3><timer/></h3>
+                <button ng-click="startTimer()" ng-disabled="timerRunning">Start Timer</button>
+                <button ng-click="stopTimer()" ng-disabled="!timerRunning">Stop Timer</button>
+            </div>
+            <br/> -->
+    </div>
+</body>
+<html>
