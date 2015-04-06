@@ -45,6 +45,11 @@ function isEmpty(str) {
 
 function drop(ev) {
         ev.preventDefault();
+
+        /*Only put image under the coincontainner*/
+        if(!ev.target.classList.contains("coinContainner")){
+            return;
+        }
         var existImgs = ev.target.childNodes;
         var data = ev.dataTransfer.getData("text");
 
