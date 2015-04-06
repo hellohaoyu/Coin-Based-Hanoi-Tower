@@ -39,11 +39,18 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
+function isEmpty(str) {
+    return (!str || 0 === str.length);
+}
+
 function drop(ev) {
         ev.preventDefault();
         var existImgs = ev.target.childNodes;
         var data = ev.dataTransfer.getData("text");
 
+        if (isEmpty(data)) {
+            return;
+        };
         if (existImgs.length > 0) {
             for (var i = existImgs.length - 1; i >= 0; i--) {
                 if (Number(existImgs[i].id) > Number(data)) {
