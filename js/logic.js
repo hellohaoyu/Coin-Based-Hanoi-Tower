@@ -1,19 +1,3 @@
-// Add event listner to elements
-// function init() {
-//     var containers = document.getElementsByClassName("coinContainner");
-//     var images = containers[0].childNodes;
-//     for (var i = containers.length - 1; i >= 0; i--) {
-//         containers[i].addEventListener("ondrop", drop);
-//         containers[i].addEventListener("ondragover", allowDrop);
-//     };
-
-//     for (var i = images.length - 1; i >= 0; i--) {
-//         images[i].addEventListener("ondragstart", drag);
-//     };
-
-// }
-
-
 var tower = angular.module('Tower', []);
 
 tower.controller('datecontroller',['$scope',function ($scope){
@@ -22,7 +6,6 @@ tower.controller('datecontroller',['$scope',function ($scope){
 
 
 function drag(ev) {
-    //alert("Drag ID: " + ev.target.id);
     var id = ev.target.id;
     var existImgs = ev.target.parentNode.childNodes;
     for (var i = existImgs.length - 1; i >= 0; i--) {
@@ -67,9 +50,3 @@ function drop(ev) {
 
         ev.target.appendChild(document.getElementById(data));
     }
-
-// function warning(){
-//     var warn = document.getElementById("warning");
-//     warn.inner
-// }
-    // init();
